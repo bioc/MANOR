@@ -6,19 +6,19 @@
 \description{Displays a pan-genomic representation of a normalized arrayCGH.}
 \usage{
   \method{genome.plot}{arrayCGH}(arrayCGH, x="PosOrder", y="LogRatio",
-    chrLim=NULL, col.var=NULL, clim=NULL, cex=NULL, pch=NULL, \ldots)  
-  \method{genome.plot}{default}(data, pch=NULL, cex=NULL, xlab="", ylab="", \ldots)} 
+    chrLim=NULL, col.var=NULL, clim=NULL, cex=NULL, pch=NULL, \ldots)
+  \method{genome.plot}{default}(data, pch=NULL, cex=NULL, xlab="", ylab="", \ldots)}
 \arguments{
   \item{arrayCGH}{an object of type \code{arrayCGH}}
   \item{data}{a data frame with two columns: 'x' and 'y', and optionally
     a column data\$chrLim giving the limits of each chromosome}
-  \item{x}{a variable name from \code{arrayCGH\$cloneValues} giving the order position
+  \item{x}{a variable name from \code{arrayCGH$cloneValues} giving the order position
     of the clones along the genome (defaults to 'PosOrder')}
-  \item{y}{a variable name from \code{arrayCGH\$cloneValues} to be plotted along the
+  \item{y}{a variable name from \code{arrayCGH$cloneValues} to be plotted along the
     genome (defaults to 'LogRatio')}
   \item{chrLim}{an optional variable name from \code{arrayCGH\$cloneValues}
     giving the limits of each chromosome}
-  \item{col.var}{a variable name from \code{arrayCGH\$cloneValues}
+  \item{col.var}{a variable name from \code{arrayCGH$cloneValues}
     defining the color legend}
   \item{clim}{a numeric vector of length 2: color range limits (used if \code{col.var} is numeric)}
   \item{cex}{a numerical value giving the amount by which plotting text
@@ -59,10 +59,10 @@ gradient.nonorm <- sort(gradient.nonorm)
 
 \dontrun{
 genome.plot(gradient.nonorm, pch=20, main="Genomic profile without
-normalization", chrLim="LimitChr")   
+normalization", chrLim="LimitChr")
 x11()
 genome.plot(gradient.norm, pch=20, main="Genomic profile with
-normalization", chrLim="LimitChr")   
+normalization", chrLim="LimitChr")
 }
 }
 \seealso{\code{\link{flag}}, \code{\link{report.plot}}}

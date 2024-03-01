@@ -5,18 +5,18 @@
 \title{Summarize information about flags after array normalization}
 \description{
   Compute spot-level information (number of flagged spots, normalization
-  parameters), and display it in a convenient way 
+  parameters), and display it in a convenient way
 }
 \details{This function is used by the function \code{html.report} for
   the generation of an HMTL report of the normalization step.
-  It can also be used by itself. 
+  It can also be used by itself.
 }
 
 \value{
   A data.frame data.frame with 4 columns:
   \item{name}{flag character}
   \item{label}{flag label}
-  \item{arg}{first numeric argument of \code{flag\$FUN}}
+  \item{arg}{first numeric argument of \code{flag$FUN}}
   \item{count}{number of flagged spots}
 }
 
@@ -28,11 +28,11 @@
 \arguments{
   \item{arrayCGH}{an object of type arrayCGH, \emph{after normalization}
     by MANOR}
-  \item{flag.list}{a list of flags with \code{flag\$char} corresponding
+  \item{flag.list}{a list of flags with \code{flag$char} corresponding
     to the values of \code{spot.flags}}
-  \item{flag.var}{the name of a variable of arrayCGH\$arrayValues
+  \item{flag.var}{the name of a variable of \code{arrayCGH$arrayValues}
     containing information about flags (defaults to \code{Flag})}
-  \item{var}{the name of a variable of arrayCGH\$cloneValues containing
+  \item{var}{the name of a variable of \code{arrayCGH$cloneValues} containing
     signal values (defaults to \code{LogRatio})}
   \item{spot.flags}{a character vector containing information about
     flags}
@@ -50,16 +50,16 @@ data(spatial)
 data(flags)
 flag.list <- list(spatial=local.spatial.flag, spot=spot.corr.flag,
 ref.snr=ref.snr.flag, dapi.snr=dapi.snr.flag, rep=rep.flag,
-unique=unique.flag) 
+unique=unique.flag)
 flag.list$spatial$args <- alist(var="ScaledLogRatio", by.var=NULL,
-nk=5, prop=0.25, thr=0.15, beta=1, family="symmetric") 
+nk=5, prop=0.25, thr=0.15, beta=1, family="symmetric")
 flag.list$spot$args <- alist(var="SpotFlag")
 flag.list$spot$char <- "O"
 flag.list$spot$label <- "Image analysis"
 
 ## normalize arrayCGH
 \dontrun{edge.norm <- norm(edge, flag.list=flag.list,
-var="LogRatio", FUN=median, na.rm=TRUE)} 
+var="LogRatio", FUN=median, na.rm=TRUE)}
 fs <- flag.summary(edge.norm, flag.list=flag.list, flag.var="Flag")
 
 print("Flag and normalization parameters summary")

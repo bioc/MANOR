@@ -32,7 +32,7 @@ The function \code{arrayTrend} computes the spatial trend.
   of the \code{arrayCGH} object.
 }
 
-\author{Philippe Hup?, \email{Philippe.Hupe@curie.fr}.}
+\author{Philippe Hup?, \email{philippe.hupe@curie.fr}.}
 
 \note{People interested in tools for array-CGH analysis can
   visit our web-page: \url{http://bioinfo.curie.fr}.}
@@ -47,8 +47,8 @@ The function \code{arrayTrend} computes the spatial trend.
 data(spatial)  ## arrays with local spatial effects
 
 edgeTrend <- arrayTrend(edge, "LogRatio", span=0.03, degree=1,
-iterations=3, family="symmetric") 
-GLAD::arrayPlot(edgeTrend, "Trend", main="Spatial trend of array CGH", bar="v") 
+iterations=3, family="symmetric")
+GLAD::arrayPlot(edgeTrend, "Trend", main="Spatial trend of array CGH", bar="v")
 }
 
 \references{

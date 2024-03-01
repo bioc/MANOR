@@ -21,7 +21,7 @@ genome.plot.arrayCGH <- function(arrayCGH, x="PosOrder", y="LogRatio", chrLim=NU
     }
     z <- arrayCGH$cloneValues[[col.var]]
 
-    if (class(z)=="numeric") {
+    if (inherits(z, "numeric")) {
         if (length(clim)!=2)
             clim <- c(quantile(z, 0.05, na.rm=TRUE), quantile(z, 0.95, na.rm=TRUE))
         max <- clim[2]

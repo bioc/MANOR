@@ -1,6 +1,10 @@
+# MANOR 1.75.2
+
+ * Replace calls to 'class' by calls to 'inherits'.
+
 # MANOR 1.75.1
 
- * Fix minor issues in .Rd files
+ * Fix minor issues in .Rd files.
 
 # MANOR 1.59.5
 

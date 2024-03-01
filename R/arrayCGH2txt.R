@@ -12,7 +12,7 @@ arrayCGH2txt <- function(arrayCGH, dir, filename, sep="\t")
     for(i in 1:length(file.list))
     {
         d <- arrayCGH[[file.list[i]]]
-        if (class(d)=="data.frame")
+        if (inherits(d, "data.frame"))
             write.table(d, file=paste(dir, "/", file.list[i], filename, sep=""), sep=sep, row.names=FALSE, col.names=gsub("\\.", "_", names(d)), quote=FALSE)
     }
 }

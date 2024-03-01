@@ -1,3 +1,7 @@
+# MANOR 1.75.1
+
+ * Fix minor issues in .Rd files
+
 # MANOR 1.59.5
 
  * Merge inst/NEWS to NEWS.md

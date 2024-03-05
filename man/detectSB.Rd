@@ -44,7 +44,7 @@ proportiondown,type="up", thresholdup=0.2, thresholddown=0.2, \ldots )
     are coded by 0.}
 }
 
-\author{Philippe Hup?, \email{philippe.hupe@.curie.fr}.}
+\author{Philippe Hupé, \email{philippe.hupe@curie.fr}.}
 
 \note{People interested in tools for array-CGH analysis can
   visit our web-page: \url{http://bioinfo.curie.fr}.}

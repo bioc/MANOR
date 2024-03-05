@@ -16,7 +16,7 @@
     of the clones along the genome (defaults to 'PosOrder')}
   \item{y}{a variable name from \code{arrayCGH$cloneValues} to be plotted along the
     genome (defaults to 'LogRatio')}
-  \item{chrLim}{an optional variable name from \code{arrayCGH\$cloneValues}
+  \item{chrLim}{an optional variable name from \code{arrayCGH$cloneValues}
     giving the limits of each chromosome}
   \item{col.var}{a variable name from \code{arrayCGH$cloneValues}
     defining the color legend}

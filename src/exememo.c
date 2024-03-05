@@ -5,9 +5,9 @@
 
     Jan 1998
 
-    Van Mo DANG       
+    Van Mo DANG
     Universite de Technologie de Compiegne
-    URA CNRS 817 
+    URA CNRS 817
 
     Vers-mod  Date         Description
 
@@ -22,7 +22,7 @@
 /* ------------------------------------------------------------------- */
 void* GenAlloc
 (
- size_t       nelem,        /* I : number of elements to allocate */ 
+ size_t       nelem,        /* I : number of elements to allocate */
  size_t       elsize,       /* I : size in bytes of each element */
  int          doexit,       /* I : 1 if failure exits, 0 if only return NULL */
  const char*  where,        /* I : name of calling function */

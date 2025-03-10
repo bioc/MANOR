@@ -1,6 +1,6 @@
 Package: MANOR
-Version: 1.79.0
-Date: 2024-03-05
+Version: 1.79.1
+Date: 2024-03-10
 Title: CGH Micro-Array NORmalization
 Description: Importation, normalization, visualization, and quality
         control functions to correct identified sources of variability

@@ -43,7 +43,7 @@ Vers-mod  Date         Who Description
 1.06-c    28-JUN-1998  MD  fGetNeigh and fCompuDens fetched local to their use
 1.06-d    29-JUN-1998  MD  MakeParaFromLabeled uses EstimPara to compute param.
 1.06-e    30-JUN-1998  MD  Call MakeParaFromLabeled in INIT_SORT mode
-1.06-f    30-JUN-1998  MD  Add ModelPreprocess 
+1.06-f    30-JUN-1998  MD  Add ModelPreprocess
 1.06-g    01-JUL-1998  MD  Call MakeParaFromLabeled in INIT_FILE mode
 1.06-h    17-JUL-1998  MD  Bug fix : CompSortValue now puts NaN at end
 1.06-i    19-JUL-1998  MD  Change heuristic, save classif. just before L drops
@@ -74,7 +74,7 @@ Vers-mod  Date         Who Description
 #include <time.h>       /* time */
 #include <R.h>
 #ifdef __TURBOC__
-#include <alloc.h>      /* coreleft, ... */ 
+#include <alloc.h>      /* coreleft, ... */
 #endif
 
 #include "nem_alg.h"    /* prototypes */
@@ -99,7 +99,7 @@ typedef struct
 {
     int     Index ;
     float   Value ;
-} 
+}
 SortPtT ;
 
 typedef struct
@@ -127,13 +127,13 @@ static float mknan()
 /* Called by ClassifyByNem */
 
   static void ModelPreprocess
-        ( 
-	  const ModelSpecT*   SpecP,            /* I */ 
+        (
+	  const ModelSpecT*   SpecP,            /* I */
 	  DataT*              DataP             /* I/O */
-	) ; 
+	) ;
 
   static int ClassifyByNemOneBeta                              /*V1.04-a*/
-        ( 
+        (
           const DataT         *DataP,           /* I */
           const NemParaT      *NemParaP,        /* I */
           const SpatialT      *SpatialP,        /* I */
@@ -143,7 +143,7 @@ static float mknan()
         ) ;
 
   static int ClassifyByNemHeuBeta                             /*V1.04-a*/
-        ( 
+        (
           const DataT         *DataP,           /* I */
           NemParaT            *NemParaP,        /* I[M] */
           const SpatialT      *SpatialP,        /* I */
@@ -163,7 +163,7 @@ static float mknan()
 /* Called by ClassifyByNemHeuBeta */
 
   static int ClassifyByNemOneBeta                               /*V1.04-a*/
-        ( 
+        (
           const DataT         *DataP,           /* I */
           const NemParaT      *NemParaP,        /* I */
           const SpatialT      *SpatialP,        /* I */
@@ -196,7 +196,7 @@ static float mknan()
 
 
     static void ComputePartitionFromPara
-        ( 
+        (
 	 const int          Needinit,    /* I : 1 if need init, 0 if normal */
 	 const DataT*       DataP,       /* I */
 	 const NemParaT*    NemParaP,    /* I */
@@ -225,7 +225,7 @@ static float mknan()
         ) ;
 
     static int MakeParaFromLabeled  /*V1.03-d*/
-        ( 
+        (
             const DataT*        DataP,      /* I */
 	    const float*        C_NK,       /* I */
 	    const ModelSpecT*   SpecP,      /* I */
@@ -236,7 +236,7 @@ static float mknan()
         ) ;
 
     static StatusET MakeRandomPara
-        ( 
+        (
             const DataT*        DataP,      /* I */
 	    const ModelSpecT*   SpecP,      /* I */
             const SampleDesT*   DescP,      /* I */
@@ -275,7 +275,7 @@ static float mknan()
 
 
           /*V1.04-f*/
-	  static float ChosenCrit( const CriterT* CriterP , CritET Which ) ; 
+	  static float ChosenCrit( const CriterT* CriterP , CritET Which ) ;
 
 
 static StatusET RandNemAlgo
@@ -297,7 +297,7 @@ static StatusET RandNemAlgo
 
     static int CompSortValue( const void* elt1P, const void* elt2P ) ;
 
-    static int CompSortNoNan( const void* elt1P, const void* elt2P ) ; 
+    static int CompSortNoNan( const void* elt1P, const void* elt2P ) ;
 
 
 
@@ -319,7 +319,7 @@ static int HasConverged       /* ret : TRUE if convergence test satisfied */
   const float*    CM,         /* I : current  classification matrix */
   const int       Npt,        /* I : number of objects */
   const int       Nk,         /* I : number of classes */
-  const float     OldCrit,    /* I : previous criterion */ 
+  const float     OldCrit,    /* I : previous criterion */
   const int       CritToDo,   /* I : 1 = criterion needs to be computed */
   const float     Beta,       /* I : value of beta to compute criterion */
   const SpatialT* SpatialP,   /* I : spatial info to compute criterion */
@@ -384,11 +384,11 @@ EstimBeta
         const float*        CM,          /* I : class. matrix [Npt*Nk] */
         const SpatialT*     SpatialP,    /* I : neighborhood system */
         WorkingT*           WorkP,       /* I :PkFkiM, O:Neighs */
-        CriterT*            CriterP      /* O : computed criteria */ 
+        CriterT*            CriterP      /* O : computed criteria */
      ) ;
 
     static void CalcError                /*V1.04-e*/
-      ( 
+      (
        const float*     CM,       /* I : found classification */
        const int        N,        /* I : number of points */
        const int        Harden,   /* I : 1 use hardened CM, 0 use CM itself */
@@ -451,7 +451,7 @@ EstimBeta
         const float*        CM,          /* I : class. matrix [Npt*Nk] */
         const SpatialT*     SpatialP,    /* I : neighborhood system */
         WorkingT*           WorkP,       /* I :PkFkiM, O:Neighs */
-        CriterT*            CriterP      /* O : computed criteria */ 
+        CriterT*            CriterP      /* O : computed criteria */
      ) ;
 
 
@@ -484,7 +484,7 @@ EstimBeta
         const float*        CM,          /* I : class. matrix [Npt*Nk] */
         const SpatialT*     SpatialP,    /* I : neighborhood system */
         WorkingT*           WorkP,       /* I :PkFkiM, O:Neighs */
-        CriterT*            CriterP      /* O : computed criteria */ 
+        CriterT*            CriterP      /* O : computed criteria */
      ) ;
 
 
@@ -513,7 +513,7 @@ EstimBeta
         const float*        CM,          /* I : class. matrix [Npt*Nk] */
         const SpatialT*     SpatialP,    /* I : neighborhood system */
         WorkingT*           WorkP,       /* I :PkFkiM, O:Neighs */
-        CriterT*            CriterP      /* O : computed criteria */ 
+        CriterT*            CriterP      /* O : computed criteria */
      ) ;
 
 
@@ -530,7 +530,7 @@ EstimBeta
      ) ;
 
 static void CalcError                /*V1.04-e*/
-      ( 
+      (
        const float*     CM,       /* I : found classification */
        const int        N,        /* I : number of points */
        const int        Harden,   /* I : 1 use hardened CM, 0 use CM itself */
@@ -549,38 +549,38 @@ static void CalcError                /*V1.04-e*/
 
 /* ------------------------------------------------------------------- */
 int ClassifyByNem                                             /*V1.04-a*/
-        ( 
+        (
           NemParaT      *NemParaP,        /* I */
           const SpatialT      *SpatialP,        /* I */
           DataT               *DataP,           /* I/O */
           StatModelT          *StatModelP,      /* I/O */
           float               *ClassifM,        /* I/O */
 	  CriterT             *CriterP          /* O */  /*V1.03-f*/
-        ) 
+        )
 /* ------------------------------------------------------------------- */
 {
   StatusET   sts = STS_OK ;
 
 
   /*V1.06-f*/
-  ModelPreprocess( & StatModelP->Spec, DataP ) ; 
+  ModelPreprocess( & StatModelP->Spec, DataP ) ;
 
   switch( StatModelP->Spec.BetaModel )
     {
     case BETA_FIX:
     case BETA_PSGRAD:
-      sts = ClassifyByNemOneBeta( DataP, NemParaP, SpatialP, 
+      sts = ClassifyByNemOneBeta( DataP, NemParaP, SpatialP,
 				    StatModelP, ClassifM, CriterP ) ;
       break;
 
     case BETA_HEUD:
     case BETA_HEUL:
-      sts = ClassifyByNemHeuBeta( DataP, NemParaP, SpatialP, 
+      sts = ClassifyByNemHeuBeta( DataP, NemParaP, SpatialP,
 				  StatModelP, ClassifM, CriterP ) ;
       break ;
 
     default:
-      Rprintf( "Error : unkwnown beta estimation mode %d\n", 
+      Rprintf( "Error : unkwnown beta estimation mode %d\n",
 	       StatModelP->Spec.BetaModel ) ;
       sts = STS_E_FUNCARG ;
     }
@@ -593,13 +593,13 @@ int ClassifyByNem                                             /*V1.04-a*/
 
 /* ------------------------------------------------------------------- */
 int ComputeMAP                     /* ret : MAP label in 0..Nk-1 */
-        ( 
+        (
           const float* ClassifM,   /* I */
           int          Ipt,        /* I */
           int          Nk,         /* I */
 	  TieET        TieRule,    /* I */
           int*         kmaxesV     /* I/O [Nk] */
-        ) 
+        )
 /* ------------------------------------------------------------------- */
 {
     int   k ;
@@ -611,7 +611,7 @@ int ComputeMAP                     /* ret : MAP label in 0..Nk-1 */
     /* ... First pass : find out the first maximum uik */
     for ( k = 1 ; k < Nk ; k ++ ) {
 
-        float uik = ClassifM[ (Ipt * Nk) + k ] ;        
+        float uik = ClassifM[ (Ipt * Nk) + k ] ;
         if ( uik > ukmax )
           {
             ukmax = uik ;
@@ -624,7 +624,7 @@ int ComputeMAP                     /* ret : MAP label in 0..Nk-1 */
       kmaxesV[ 0 ] = kmax ;
       for ( k = kmax + 1, nequal = 0 ; k < Nk ; k ++ ) {
 
-        float uik = ClassifM[ (Ipt * Nk) + k ] ;        
+        float uik = ClassifM[ (Ipt * Nk) + k ] ;
         if ( uik == ukmax )
           {
             nequal ++ ;
@@ -636,7 +636,7 @@ int ComputeMAP                     /* ret : MAP label in 0..Nk-1 */
       if ( nequal > 0 ) {
         /* Choose randomly one of the k */
         int  imax ;   /* index of chosen k : 0 .. nequal */
-        
+
         imax = RandomInteger( 0, nequal ) ;
         kmax = kmaxesV[ imax ] ;
       }
@@ -652,7 +652,7 @@ int ComputeMAP                     /* ret : MAP label in 0..Nk-1 */
 
 /* ------------------------------------------------------------------- */
 void LabelToClassVector
- ( 
+ (
   const int Nk,    /* I: number of classes */
   const int Label, /* I: class of interest 0..Nk-1 */
   float* Cout_K    /* O: classification vector [Nk] */
@@ -661,9 +661,9 @@ void LabelToClassVector
 {
   int k;
 
-  for ( k = 0 ; k < Nk ; k ++ ) 
+  for ( k = 0 ; k < Nk ; k ++ )
     Cout_K[ k ] = 0.0 ;
-  
+
   if ( ( 0 <= Label ) && ( Label < Nk ) )
     Cout_K[ Label ] = 1.0 ;
 }
@@ -675,8 +675,8 @@ void LabelToClassVector
 
 /* ------------------------------------------------------------------- */
 static void ModelPreprocess
-        ( 
-	  const ModelSpecT*   SpecP,            /* I */ 
+        (
+	  const ModelSpecT*   SpecP,            /* I */
 	  DataT*              DataP             /* I/O */
 	)
 /* ------------------------------------------------------------------- */
@@ -690,13 +690,13 @@ static void ModelPreprocess
   int         ipt ;
 
 
-  switch( SpecP->ClassFamily ) 
+  switch( SpecP->ClassFamily )
     {
     case FAMILY_LAPLACE:  	/* Compute sorted index */
     case FAMILY_BERNOULLI:  	/* Compute sorted index */
-      {	
+      {
 	/* Allocate globally the sorted index */
-	DataP->SortPos_ND = GenAlloc( npt * nd, sizeof( int ), 
+	DataP->SortPos_ND = GenAlloc( npt * nd, sizeof( int ),
 				      1, func, "SortPos_ND" ) ;
 
 	/* Allocate the local sorting table to be sorted */
@@ -724,7 +724,7 @@ static void ModelPreprocess
 	    for ( ipt = 0 ; ipt < npt ; ipt ++ )
 	      DataP->SortPos_ND[ ( ipt * nd ) + d ] = tabptV[ ipt ].Index ;
 	  }
-      
+
 	/* Free the local sorting table */
 	GenFree( tabptV ) ;
       }
@@ -739,14 +739,14 @@ static void ModelPreprocess
 
 /* ------------------------------------------------------------------- */
 static int ClassifyByNemHeuBeta                             /*V1.04-a*/
-        ( 
+        (
           const DataT         *DataP,           /* I */
           NemParaT            *NemParaP,        /* I[M] */
           const SpatialT      *SpatialP,        /* I */
           StatModelT          *StatModelP,      /* I/O */
           float               *ClassifM,        /* I/O */
 	  CriterT             *CriterP          /* O */  /*V1.03-f*/
-        ) 
+        )
 /* ------------------------------------------------------------------- */
 {
   const char* func = "ClassifyByNemHeuBeta" ;
@@ -788,29 +788,32 @@ static int ClassifyByNemHeuBeta                             /*V1.04-a*/
   clasiniM = GenAlloc( npt * nk, sizeof( float ), 0, func, "clasiniM" ) ;
   clasbestM = GenAlloc( npt * nk, sizeof( float ), 0, func, "clasbestM" ) ;
 
-  if ( ( btaV == NULL ) || ( criV == NULL ) || ( clasiniM == NULL ) ) 
+  if ( ( btaV == NULL ) || ( criV == NULL ) || ( clasiniM == NULL ) )
     return STS_E_MEMORY ;
 
   /* Save initial classification matrix */
-  memcpy( clasiniM, ClassifM, 
+  memcpy( clasiniM, ClassifM,
 	  npt * nk * sizeof( float ) ) ;
 
   /* For tests */  /*V1.04-d*/
-  if ( NemParaP->Debug )
-    {
-      strncpy( namecri, NemParaP->OutBaseName, LEN_FILENAME ) ;
-      strncat( namecri, ".bta", LEN_FILENAME ) ;
-      fcri = fopen( namecri , "w" ) ;
-    }
-  else
+  if (NemParaP->Debug) {
+      // check appropriate base length
+      size_t base_len = strlen(NemParaP->OutBaseName);
+      // limit base length
+      if (base_len > LEN_FILENAME - 4) {
+          base_len = LEN_FILENAME - 4;
+      }
+      snprintf(namecri, LEN_FILENAME, "%.*s.bta", (int)base_len, NemParaP->OutBaseName);
+      fcri = fopen(namecri, "w");
+  }  else
     fcri = NULL ;
 
 
-  
+
   /* While bta less than btamax and stopping condition not met */
 
   Dincreas = FALSE;  /* Initialize values for Hathaway heuristic */
-  Dmin = 0.0; 
+  Dmin = 0.0;
   Ddrop = FALSE ;
   DdropThres = - NemParaP->BtaHeuDDrop * DataP->NbPts ;
 
@@ -838,7 +841,7 @@ static int ClassifyByNemHeuBeta                             /*V1.04-a*/
       /* Reload initial classification matrix */
       memcpy( ClassifM, clasiniM, npt * nk * sizeof( float ) ) ;
 
-      sts = ClassifyByNemOneBeta( DataP, NemParaP, SpatialP, 
+      sts = ClassifyByNemOneBeta( DataP, NemParaP, SpatialP,
 				    StatModelP, ClassifM, CriterP ) ;
       if ( sts == STS_OK )
 	{
@@ -858,16 +861,16 @@ static int ClassifyByNemHeuBeta                             /*V1.04-a*/
     		  prevSlope = thisSlope ;
     		  thisSlope = ( criV[ nbta ] - criV[ nbta - 1 ] ) /
     		    ( btaV[ nbta ] - btaV[ nbta - 1 ] ) ;
-    		  
+
     		  if ( thisSlope >= 0.5 * DataP->NbPts ) /* positive slope */
     		    Dincreas = TRUE ;
     		}
-    
+
     	      if ( nbta >= 3 )
     		{
-    		  Rprintf( "    * Drop : %5.1f (threshold %5.1f) *\n", 
+    		  Rprintf( "    * Drop : %5.1f (threshold %5.1f) *\n",
     			       ( thisSlope - prevSlope ) , DdropThres ) ;
-    
+
     		  if ( (! Ddrop) && (! Dincreas) ) {
 
 		    if ( (thisSlope - prevSlope) < DdropThres ) {
@@ -876,12 +879,12 @@ static int ClassifyByNemHeuBeta                             /*V1.04-a*/
 		      if ( ! NemParaP->Debug )  stop = TRUE ;
     		      Rprintf( "    * ---> Drop detected *\n" ) ;
     		      /* btaEst = btaV[ nbta - 2 ] ; V1.06-i*/
-		      btaEst = btaV[ nbta - 1 ] ; 
+		      btaEst = btaV[ nbta - 1 ] ;
 
     		    }
 		    else /* no drop of slope detected, save this class. */ {
 
-		      memcpy( clasbestM, ClassifM, 
+		      memcpy( clasbestM, ClassifM,
 			      npt * nk * sizeof( float ) ) ;
 
 		    }
@@ -890,14 +893,14 @@ static int ClassifyByNemHeuBeta                             /*V1.04-a*/
 
     		}
 	      else /* 1st or 2nd tested beta -> save classification */
-		memcpy( clasbestM, ClassifM, 
+		memcpy( clasbestM, ClassifM,
 			npt * nk * sizeof( float ) ) ;
-		
+
 	    }
 	  else  /* else Likelihood heuristic */
 	    {
 	      criV[ nbta ] = CriterP->L ;
-	      
+
     	      if ( nbta < 2 )  /* 1st beta */ {
 
 		  Lmax = CriterP->L ;
@@ -905,7 +908,7 @@ static int ClassifyByNemHeuBeta                             /*V1.04-a*/
 			   Lmax - LlossThres ) ;
 		  memcpy( clasbestM, ClassifM, npt * nk * sizeof( float ) ) ;
 		}
-	      else /* >= 2nd beta */ 
+	      else /* >= 2nd beta */
 		{
 		  if ( CriterP->L > Lmax )
 		    {
@@ -922,10 +925,10 @@ static int ClassifyByNemHeuBeta                             /*V1.04-a*/
 		      if ( ! NemParaP->Debug )  stop = TRUE ;
     		      Rprintf( "    * ---> L loss detected *\n" ) ;
     		      /* btaEst = btaV[ nbta - 2 ] ; V1.06-i*/
-		      btaEst = btaV[ nbta - 1 ] ; 
+		      btaEst = btaV[ nbta - 1 ] ;
     		    }
 		    else /* no drop yet detected -> save classification */ {
-		      memcpy( clasbestM, ClassifM, 
+		      memcpy( clasbestM, ClassifM,
 			      npt * nk * sizeof( float ) ) ;
 		    }
 		  }
@@ -934,12 +937,12 @@ static int ClassifyByNemHeuBeta                             /*V1.04-a*/
 	  /* end-else Likelihood heuristic */
 
 	  if ( fcri != NULL )
-	    Rprintf( "%5.2f  %10.1f  %6.3f  %d\n", 
-		     btatest , 
-		     StatModelP->Spec.BetaModel == BETA_HEUD ? 
+	    Rprintf( "%5.2f  %10.1f  %6.3f  %d\n",
+		     btatest ,
+		     StatModelP->Spec.BetaModel == BETA_HEUD ?
 		     CriterP->D : CriterP->L,
 		     CriterP->Errcur.Errorrate,
-		     StatModelP->Spec.BetaModel == BETA_HEUD ? 
+		     StatModelP->Spec.BetaModel == BETA_HEUD ?
 		     Ddrop : Lfound );
 	}
       /* end-if ClassifyByNemOneBeta OK */
@@ -950,10 +953,10 @@ static int ClassifyByNemHeuBeta                             /*V1.04-a*/
     int ibta ;
     int found ;
     float  DThres ; /* threshold of criterion loss to detect */
-    
+
     DThres = criV[ 1 ] - ( criV[ 1 ] - Dmin ) * NemParaP->BtaHeuDLoss ;
 
-    for ( ibta = 1, found = FALSE ; 
+    for ( ibta = 1, found = FALSE ;
 	  ( ibta <= nbta ) && ( ! found ) ; ibta ++ )
       found = criV[ ibta ] <= DThres ;
 
@@ -987,7 +990,7 @@ static int ClassifyByNemHeuBeta                             /*V1.04-a*/
 
   Rprintf( "\n * * *  Estimated beta : %3.2f * * *\n" , btaEst ) ;
   if ( StatModelP->Spec.BetaModel == BETA_HEUD )
-    Rprintf( " * * *   Using %s * * *\n\n" , 
+    Rprintf( " * * *   Using %s * * *\n\n" ,
 	     Ddrop ? "drop detection" : "loss thresholding" ) ;
 
 
@@ -995,9 +998,9 @@ static int ClassifyByNemHeuBeta                             /*V1.04-a*/
   GenFree( criV ) ;
   GenFree( clasiniM ) ;
   GenFree( clasbestM ) ;
-  
+
   StatModelP->Para.Beta = btaEst ;
-  return ClassifyByNemOneBeta( DataP, NemParaP, SpatialP, 
+  return ClassifyByNemOneBeta( DataP, NemParaP, SpatialP,
 				 StatModelP, ClassifM, CriterP ) ;
 }
 
@@ -1005,14 +1008,14 @@ static int ClassifyByNemHeuBeta                             /*V1.04-a*/
 
 /* ------------------------------------------------------------------- */
 static int ClassifyByNemOneBeta                             /*V1.04-a*/
-        ( 
+        (
           const DataT         *DataP,           /* I */
           const NemParaT      *NemParaP,        /* I */
           const SpatialT      *SpatialP,        /* I */
           StatModelT          *StatModelP,      /* I/O */
           float               *ClassifM,        /* I/O */
 	  CriterT             *CriterP          /* O */  /*V1.03-f*/
-        ) 
+        )
 /* ------------------------------------------------------------------- */
 {
     const char* func        = "ClassifyByNemOneBeta" ;
@@ -1035,22 +1038,22 @@ static int ClassifyByNemOneBeta                             /*V1.04-a*/
         working.PkFkiM          = GenAlloc( npt * nk, sizeof( double ), 0, func, "PkFkiM" ) ;
         working.LogPkFkiM       = GenAlloc( npt * nk, sizeof( float ), 0, func, "LogPkFkiM" ) ;
         working.Neighs.NbNeigh  = SpatialP->MaxNeighs ;
-        working.Neighs.NeighsV  = GenAlloc( SpatialP->MaxNeighs, sizeof( NeighT ), 
+        working.Neighs.NeighsV  = GenAlloc( SpatialP->MaxNeighs, sizeof( NeighT ),
 					    0, func, "NeighsV" ) ;
     }
 
 #ifdef __TURBOC__
-    Rprintf( "\n Remaining memory after allocating : %lu bytes\n", 
+    Rprintf( "\n Remaining memory after allocating : %lu bytes\n",
              (unsigned long) coreleft() );
 #endif
 
-    if ( ( working.KmaxesV == NULL ) || 
-	 ( working.CtmpM == NULL ) || 
-	 ( working.CiNumV == NULL ) || 
-         ( working.ColdM == NULL ) || 
+    if ( ( working.KmaxesV == NULL ) ||
+	 ( working.CtmpM == NULL ) ||
+	 ( working.CiNumV == NULL ) ||
+         ( working.ColdM == NULL ) ||
 	 ( working.PkFkiM == NULL ) ||
 	 ( working.LogPkFkiM == NULL ) ||
-         ( ( working.Neighs.NeighsV == NULL ) && 
+         ( ( working.Neighs.NeighsV == NULL ) &&
            ( SpatialP->MaxNeighs > 0 ) ) )
     {
         Rprintf( "Could not allocate NEM working variables\n" );
@@ -1068,23 +1071,23 @@ static int ClassifyByNemOneBeta                             /*V1.04-a*/
     switch( NemParaP->InitMode )
     {
     case INIT_SORT:    /* initial partition to be computed by sorting */
-        Rprintf( 
+        Rprintf(
                  "Computing initial partition (sort variable %d) ...\n",
                   NemParaP->SortedVar + 1 ) ;
 
         InitPara( DataP, & StatModelP->Desc, & StatModelP->Spec,
-		  & StatModelP->Para, 
+		  & StatModelP->Para,
 		  working.CtmpM ) ;
 
         if ( ( err = InitPartitionSort( DataP, nk,
-                                        NemParaP->SortedVar, 
+                                        NemParaP->SortedVar,
                                         ClassifM ) ) != STS_OK )
 	  return err ;
 
 	/*V1.06-e*/
-	err = MakeParaFromLabeled( DataP, ClassifM, & StatModelP->Spec, 
+	err = MakeParaFromLabeled( DataP, ClassifM, & StatModelP->Spec,
 				   & StatModelP->Desc,
-				   & StatModelP->Para, & missk, & missd ) ; 
+				   & StatModelP->Para, & missk, & missd ) ;
         if ( err != STS_OK )
 	  return err ;
 
@@ -1092,9 +1095,9 @@ static int ClassifyByNemOneBeta                             /*V1.04-a*/
             Rprintf( "Initialization by sorting variable %d:\n",
                      NemParaP->SortedVar + 1 ) ;
 
-        err = NemAlgo( DataP, NemParaP, SpatialP, & StatModelP->Spec, 
+        err = NemAlgo( DataP, NemParaP, SpatialP, & StatModelP->Spec,
 		       & StatModelP->Desc,
-		       flog, & StatModelP->Para, ClassifM, 
+		       flog, & StatModelP->Para, ClassifM,
 		       & working, CriterP ) ;
         break ;
 
@@ -1105,24 +1108,24 @@ static int ClassifyByNemOneBeta                             /*V1.04-a*/
 
 	/*V1.06-g*/
         InitPara( DataP, & StatModelP->Desc, & StatModelP->Spec,
-		  & StatModelP->Para, 
+		  & StatModelP->Para,
 		  working.CtmpM ) ;
 
-	err = MakeParaFromLabeled( DataP, ClassifM, & StatModelP->Spec, 
+	err = MakeParaFromLabeled( DataP, ClassifM, & StatModelP->Spec,
 				   & StatModelP->Desc,
-				   & StatModelP->Para, & missk, & missd ) ; 
+				   & StatModelP->Para, & missk, & missd ) ;
         if ( err != STS_OK )
 	  return err ;
 
-        err = NemAlgo( DataP, NemParaP, SpatialP, & StatModelP->Spec, 
+        err = NemAlgo( DataP, NemParaP, SpatialP, & StatModelP->Spec,
 		       & StatModelP->Desc,
-		       flog, & StatModelP->Para, ClassifM, 
+		       flog, & StatModelP->Para, ClassifM,
 		       & working, CriterP ) ;
         break ;
 
 
     case INIT_LABEL:
-        Rprintf( 
+        Rprintf(
 		 "Initializing centers from partially labeled sample\n");
 
         if ( flog != NULL ) {
@@ -1132,13 +1135,13 @@ static int ClassifyByNemOneBeta                             /*V1.04-a*/
 
 	/*V1.03-d*/
         InitPara( DataP, & StatModelP->Desc, & StatModelP->Spec,
-		  & StatModelP->Para, 
+		  & StatModelP->Para,
 		  working.CtmpM ) ;
 
         /* Compute initial parameters using observations with known labels */
-	err = MakeParaFromLabeled( DataP, ClassifM, & StatModelP->Spec, 
+	err = MakeParaFromLabeled( DataP, ClassifM, & StatModelP->Spec,
 				   & StatModelP->Desc,
-				   & StatModelP->Para, & missk, & missd ) ; 
+				   & StatModelP->Para, & missk, & missd ) ;
         if ( ( err != STS_OK ) && ( err != STS_W_EMPTYCLASS ) )
 	  return err ;
 
@@ -1146,21 +1149,21 @@ static int ClassifyByNemOneBeta                             /*V1.04-a*/
 	for ( k = 0 ; k < nk ; k ++ )
 	  StatModelP->Para.Prop_K[ k ] = 1.0 / nk ; /*V1.05-b*/
 
-	ComputePartitionFromPara( 1, DataP, NemParaP, & StatModelP->Spec, 
-				  & StatModelP->Para, SpatialP, 
+	ComputePartitionFromPara( 1, DataP, NemParaP, & StatModelP->Spec,
+				  & StatModelP->Para, SpatialP,
 				  ClassifM, CriterP, flog, & working ) ;
 
 	/* Run NEM with this initial partition */
-        err = NemAlgo( DataP, NemParaP, SpatialP, & StatModelP->Spec, 
+        err = NemAlgo( DataP, NemParaP, SpatialP, & StatModelP->Spec,
 		       & StatModelP->Desc,
-		       flog, & StatModelP->Para, ClassifM, 
+		       flog, & StatModelP->Para, ClassifM,
 		       & working, CriterP ) ;
         break ;
 
 
     case INIT_MIXINI:  /*V1.06-j*/
     case INIT_MIXFIX:
-        Rprintf( 
+        Rprintf(
 		 "Initializing parameters from given value\n");
 
         if ( flog != NULL ) {
@@ -1168,23 +1171,23 @@ static int ClassifyByNemOneBeta                             /*V1.04-a*/
 	  Rprintf( "%4d ", 0 ) ;
 	}
 
-	ComputePartitionFromPara( 1, DataP, NemParaP, & StatModelP->Spec, 
-				  & StatModelP->Para, SpatialP, 
+	ComputePartitionFromPara( 1, DataP, NemParaP, & StatModelP->Spec,
+				  & StatModelP->Para, SpatialP,
 				  ClassifM, CriterP, flog, & working ) ;
 
 	/* Run NEM with this initial partition */
-        err = NemAlgo( DataP, NemParaP, SpatialP, & StatModelP->Spec, 
+        err = NemAlgo( DataP, NemParaP, SpatialP, & StatModelP->Spec,
 		       & StatModelP->Desc,
-		       flog, & StatModelP->Para, ClassifM, 
+		       flog, & StatModelP->Para, ClassifM,
 		       & working, CriterP ) ;
 	break ;
 
     default:   /* Else randomly generate initial classifications */
-        err = RandNemAlgo ( DataP, NemParaP, SpatialP, & StatModelP->Spec, 
+        err = RandNemAlgo ( DataP, NemParaP, SpatialP, & StatModelP->Spec,
 			    & StatModelP->Desc,
-			    flog, & StatModelP->Para, ClassifM, 
+			    flog, & StatModelP->Para, ClassifM,
 			    & working, CriterP ) ;
-	  
+
     } /* end switch( NemParaP->InitMode ) */
 
     /* Free allocated structures */
@@ -1215,7 +1218,7 @@ static void InitPara
 	 const ModelSpecT*  SpecP,       /* I */
 	 ModelParaT*        ParaP,       /* O */
          float*             C_NK         /* T */
-        ) 
+        )
 /*\
 
     This function initializes to NaN all class parameters, computes
@@ -1230,7 +1233,7 @@ static void InitPara
   int             nk          = SpecP->K ;
   int             ipt ;
   int             d, k ;
-  int             emptyk ;  /* index of empty class, 0 if none 
+  int             emptyk ;  /* index of empty class, 0 if none
 			       (not used here)*/
 
 
@@ -1243,19 +1246,19 @@ static void InitPara
       for ( ipt = 0 ; ipt < npt ; ipt ++ )
 	{
 	  float x = DataP->PointsM[ ipt * nd + d ] ;
-	  
+
 	  if ( !(DataP->NbMiss) || ! isnan( x ) )
 	    {
 	      if ( x < DescP->MiniSam_D[ d ] )
 		DescP->MiniSam_D[ d ] = x ;
-	      
-	      if ( x > DescP->MaxiSam_D[ d ] ) 
+
+	      if ( x > DescP->MaxiSam_D[ d ] )
 		DescP->MaxiSam_D[ d ] = x ;
 	    }
 	}
     }
-  
-  /* Compute dispersion of whole sample 
+
+  /* Compute dispersion of whole sample
      by assigning all data to first class */
   for ( ipt = 0 ; ipt < npt ; ipt ++ )
     {
@@ -1268,10 +1271,10 @@ static void InitPara
 
   EstimPara( C_NK, DataP, nk, MISSING_IGNORE, SpecP,
 	     &emptyk, ParaP ) ;
-  
+
   for ( d = 0 ; d < nd ; d ++ )
     {
-      DescP->DispSam_D[ d ] = 
+      DescP->DispSam_D[ d ] =
 	ParaP->Disp_KD[ 0 * nd + d ] ;
     }
 
@@ -1310,7 +1313,7 @@ static float ChosenCrit( const CriterT* CriterP , CritET Which )  /*V1.04-f*/
 /* ------------------------------------------------------------------- */
 /*V1.03-d*/
 static int MakeParaFromLabeled
-        ( 
+        (
             const DataT*        DataP,      /* I */
 	    const float*        C_NK,       /* I */
 	    const ModelSpecT*   SpecP,      /* I */
@@ -1318,12 +1321,12 @@ static int MakeParaFromLabeled
 	    ModelParaT*         ParaP,      /* O */
 	    int                 *misskP,    /* O */
 	    int                 *missdP     /* O */
-        ) 
+        )
 /*\
 
      This function initializes the parameters given a classification.
      If a class and variable has no observation, the mean is drawn randomly.
-     If a class and variable has < 3 observation, 
+     If a class and variable has < 3 observation,
      the dispersion is set to ( whole sample dispersion / nk ).
 
      In the latter case, the function returns ( k * D + d ), where k and
@@ -1363,19 +1366,19 @@ static int MakeParaFromLabeled
 	  /* If there is no observation, draw mean randomly in min-max range */
 	  if ( ParaP->NbObs_KD[ k * nd + d ] < EPSILON )
 	    {
-	      Rprintf( 
+	      Rprintf(
 		       "Warning: no data in class k=%d, variable=%d\n" ,
 		       k + 1 , d + 1 );
 	      *misskP = k ;
 	      *missdP = d ;
 
-	      ParaP->Center_KD[ k * nd + d ] = 
-		RandomFloat( DescP->MiniSam_D[ d ], 
+	      ParaP->Center_KD[ k * nd + d ] =
+		RandomFloat( DescP->MiniSam_D[ d ],
 			     DescP->MaxiSam_D[ d ] ) ;
 	    }
 	  /* (Else, this mean could be computed from labeled data) */
 
-	  /* If this class/variable had less than 3 observations, 
+	  /* If this class/variable had less than 3 observations,
 	     set its dispersion to ( whole sample dispersion / nk ) */
 	  if ( ParaP->NbObs_KD[ k * nd + d ] < 3 )
 	    {
@@ -1390,12 +1393,12 @@ static int MakeParaFromLabeled
 
 /* ------------------------------------------------------------------- */
 static StatusET  MakeRandomPara
-        ( 
+        (
             const DataT*        DataP,      /* I */
 	    const ModelSpecT*   SpecP,      /* I */
             const SampleDesT*   DescP,      /* I */
 	    ModelParaT*         ParaP       /* O */
-        ) 
+        )
 /* ------------------------------------------------------------------- */
 {
     int             npt         = DataP->NbPts;
@@ -1409,7 +1412,7 @@ static StatusET  MakeRandomPara
     for ( k = 0 ; k < nk ; k ++ )
       for ( d = 0 ; d < nd ; d ++ )
 	{
-	  /* set its dispersion to ( whole sample dispersion / nk ) 
+	  /* set its dispersion to ( whole sample dispersion / nk )
 	   */
 	  ParaP->Disp_KD[ k * nd + d ] = DescP->DispSam_D[ d ] / nk ;
 	}
@@ -1419,7 +1422,7 @@ static StatusET  MakeRandomPara
       ParaP->Prop_K[ k ] = 1.0 / nk ; /*V1.03-e*/
 
 
-    /* For each class */ 
+    /* For each class */
     for ( k = 0 ; k < nk ; k ++ )
     {
         int     ipt = 0 ;  /* = 0 to shut gcc warning */
@@ -1429,7 +1432,7 @@ static StatusET  MakeRandomPara
 	/* Its mean is picked randomly from the data */
 
 	/*V1.05-m*/
-	/* Draw an object again while identical to a previously 
+	/* Draw an object again while identical to a previously
 	   drawn center */
 	for ( ndraw = 0, again = 1 ; again && ( ndraw < 100 ) ; ndraw ++ )
 	  {
@@ -1444,10 +1447,10 @@ static StatusET  MakeRandomPara
 				       coordinate is found */
 		for ( d = 0 ; d < nd ; d ++ )
 		  {
-		    if ( ! (DataP->NbMiss) || 
+		    if ( ! (DataP->NbMiss) ||
 			 ! isnan( DataP->PointsM[ ipt * nd + d ] )  )
 		      {
-			if ( ParaP->Center_KD[ h*nd + d ] != 
+			if ( ParaP->Center_KD[ h*nd + d ] !=
 			     DataP->PointsM[ ipt*nd + d ] )
 			  different = 1 ;
 		      }
@@ -1474,8 +1477,8 @@ static StatusET  MakeRandomPara
 	      }
 	    else  /* else draw randomly in min-max range of variable d */
 	      {
-		ParaP->Center_KD[ k*nd + d ] = 
-		  RandomFloat( DescP->MiniSam_D[ d ], 
+		ParaP->Center_KD[ k*nd + d ] =
+		  RandomFloat( DescP->MiniSam_D[ d ],
 			       DescP->MaxiSam_D[ d ] ) ;
 	      }
 	  }
@@ -1488,14 +1491,14 @@ static StatusET  MakeRandomPara
 
 
 /* ------------------------------------------------------------------- */
-static void StartLogFile( const char* LogName, int Npt, FILE** FlogP ) 
+static void StartLogFile( const char* LogName, int Npt, FILE** FlogP )
 /* ------------------------------------------------------------------- */
 {
-  float mult; 
+  float mult;
 
         if ( ( (*FlogP) = fopen( LogName, "w" ) ) == NULL )
         {
-            Rprintf( "Could not open file '%s' in write mode\n", 
+            Rprintf( "Could not open file '%s' in write mode\n",
                      LogName ) ;
         }
         else
@@ -1513,12 +1516,12 @@ static void StartLogFile( const char* LogName, int Npt, FILE** FlogP )
 
 /* ------------------------------------------------------------------- */
 static int  InitPartitionSort
-        ( 
+        (
 	 const DataT*    DataP,      /* I */
 	 int             Nk,         /* I */
 	 int             SortedVar,  /* I : sorted variable : 0..dim-1 */
 	 float           *ClassifM   /* O (to allocate before call) */
-	) 
+	)
 /* ------------------------------------------------------------------- */
 {
     int         ipt ;
@@ -1616,7 +1619,7 @@ static StatusET RandNemAlgo
          float*             ClassifM,        /* I/O */
          WorkingT*          WorkP,           /* I/O */
          CriterT*           CriterP          /* O */
-        ) 
+        )
 /* ------------------------------------------------------------------- */
 {
   const char* func      = "RandNemAlgo" ;
@@ -1627,7 +1630,7 @@ static StatusET RandNemAlgo
 
   int       irandom ;
   int       nbsucc ;
-  int       bestTry = -1 ;  /* stays -1 if no success 
+  int       bestTry = -1 ;  /* stays -1 if no success
 			       (to shut gcc warning) */
   CriterT   bestCritS ;/*V1.04-g*/
   float*    bestClM ;  /* to allocate */
@@ -1637,29 +1640,29 @@ static StatusET RandNemAlgo
   float     bestbeta = 0 ; /* beta of best classification */
 
 
-  InitPara( DataP, DescP, SpecP, 
+  InitPara( DataP, DescP, SpecP,
 	    ParaP, WorkP->CtmpM ) ;
 
-  if ( ( bestClM = GenAlloc( npt * nk, sizeof(float), 
+  if ( ( bestClM = GenAlloc( npt * nk, sizeof(float),
 			     0, func, "bestClM" ) ) == NULL )
     return STS_E_MEMORY ;
 
-  if ( ( bestCen_KD = GenAlloc( nk * nd, sizeof(float), 
+  if ( ( bestCen_KD = GenAlloc( nk * nd, sizeof(float),
 			     0, func, "bestCen_KD" ) ) == NULL )
     return STS_E_MEMORY ;
 
-  if ( ( bestDis_KD = GenAlloc( nk * nd, sizeof(float), 
+  if ( ( bestDis_KD = GenAlloc( nk * nd, sizeof(float),
 			     0, func, "bestDis_KD" ) ) == NULL )
     return STS_E_MEMORY ;
 
   initbeta = ParaP->Beta ;
 
   /* For each random start */
-  for ( irandom = 0, nbsucc = 0 ; 
-      irandom < NemParaP->NbRandomInits ; 
+  for ( irandom = 0, nbsucc = 0 ;
+      irandom < NemParaP->NbRandomInits ;
       irandom ++ )
   {
-    Rprintf( 
+    Rprintf(
              "\nRandom initial partition  %d\n", irandom + 1 ) ;
 
     if ( Flog != NULL )
@@ -1683,7 +1686,7 @@ static StatusET RandNemAlgo
 
     /* Initialize classification with zeros to remove eventual NaN/Inf from
        previous runs */
-    { 
+    {
       int ipt, k ;
       for ( ipt = 0 ; ipt < npt ; ipt ++ ) {
 	for ( k = 1 ; k < nk ; k ++ ) {
@@ -1692,13 +1695,13 @@ static StatusET RandNemAlgo
       }
     }
 
-    ComputePartitionFromPara( 1, DataP, NemParaP, SpecP, 
-			      ParaP, SpatialP, 
+    ComputePartitionFromPara( 1, DataP, NemParaP, SpecP,
+			      ParaP, SpatialP,
 			      ClassifM, CriterP, Flog, WorkP ) ;
 
     /* Run NEM with this initial partition */
     err = NemAlgo( DataP, NemParaP, SpatialP, SpecP, DescP,
-		   Flog, ParaP, ClassifM, 
+		   Flog, ParaP, ClassifM,
 		   WorkP, CriterP ) ;
 
     /* If NEM was successful */
@@ -1719,7 +1722,7 @@ static StatusET RandNemAlgo
         else    /* Else it is the 2nd or more success */     {
 	  /* If the criterion is better than the current one,
 	     Memorize the results */
-	  if ( ChosenCrit( CriterP , NemParaP->Crit ) > 
+	  if ( ChosenCrit( CriterP , NemParaP->Crit ) >
 	       ChosenCrit( & bestCritS , NemParaP->Crit ) )  {
 
 	    bestCritS = *CriterP ;
@@ -1733,7 +1736,7 @@ static StatusET RandNemAlgo
     } /* end if NEM was successful */
   } /* end for each random start */
 
-  /* If at least one success, return OK, 
+  /* If at least one success, return OK,
      and restore best classification results */
   if ( nbsucc > 0 ) {
     int emptyk ; /* index of empty class, 0 if none */
@@ -1741,7 +1744,7 @@ static StatusET RandNemAlgo
     err = STS_OK ;
     memcpy( ClassifM, bestClM, npt * nk * sizeof(float) ) ;
 
-    /* restore estimated centers/disp, 
+    /* restore estimated centers/disp,
        used if missing data and replace mode */
     memcpy( ParaP->Center_KD, bestCen_KD, nk * nd * sizeof(float) );
     memcpy( ParaP->Disp_KD,   bestDis_KD, nk * nd * sizeof(float) );
@@ -1751,17 +1754,17 @@ static StatusET RandNemAlgo
 
     *CriterP = bestCritS ;
 
-    Rprintf( 
-             "Best start was %d (%s = %g)\n", bestTry+1, 
-	     CritStrVC[ NemParaP->Crit ] , 
+    Rprintf(
+             "Best start was %d (%s = %g)\n", bestTry+1,
+	     CritStrVC[ NemParaP->Crit ] ,
 	     ChosenCrit( CriterP , NemParaP->Crit ) ) ;
 
     if ( CriterP->Errinfo.Kr != 0 )
-      Rprintf( "Error of best start = %5.1f\n", 
+      Rprintf( "Error of best start = %5.1f\n",
 	       100.0 * CriterP->Errcur.Errorrate ) ;
 
     if ( Flog != NULL )
-       Rprintf( "Best start was %d (U = %g)\n", 
+       Rprintf( "Best start was %d (U = %g)\n",
                 bestTry+1, ChosenCrit( CriterP , NemParaP->Crit ) ) ;
   }
   /* otherwise, return last error status */
@@ -1788,7 +1791,7 @@ static int NemAlgo
          float*             CM,              /* I/O */
          WorkingT*          WorkP,           /* I/O */
          CriterT*           CriterP          /* O */
-        ) 
+        )
 /* ------------------------------------------------------------------- */
 {
     StatusET        err         = STS_OK ;
@@ -1819,12 +1822,12 @@ static int NemAlgo
     // Rprintf( "  Iterations : " ) ;
     // Rprintf( "%4d ", 0 ) ;              /\*V1.05-g*\/ */
 
-    /* For each iteration of NEM (until : 
+    /* For each iteration of NEM (until :
        convergence, or iteration count reached, or empty class) */
     for ( iter = 1, converged = FALSE ;         /*V1.05-g*/
-          ( iter <= NemParaP->NbIters ) && 
+          ( iter <= NemParaP->NbIters ) &&
           ( ! converged ) &&
-          ( err == STS_OK ) ; 
+          ( err == STS_OK ) ;
           iter ++ )
     {
         // Commented by PN 2013-07-03
@@ -1854,23 +1857,23 @@ static int NemAlgo
             /* E-Step (Expectation) : compute current partition from
                current model parameters and old partition */
 
-	    ComputePartitionFromPara( 0, DataP, NemParaP, SpecP, ParaP, 
-				      SpatialP, 
+	    ComputePartitionFromPara( 0, DataP, NemParaP, SpecP, ParaP,
+				      SpatialP,
 				      CM, CriterP, Flog, WorkP ) ;
 
             /* Test convergence */
-	    converged = HasConverged( NemParaP->CvTest, NemParaP->CvThres, 
-				      WorkP->ColdM, CM, npt, nk, oldcrit, 
+	    converged = HasConverged( NemParaP->CvTest, NemParaP->CvThres,
+				      WorkP->ColdM, CM, npt, nk, oldcrit,
 				      (Flog==NULL), ParaP->Beta, SpatialP,
 				      NemParaP->Crit,
 				      CriterP, WorkP ) ;  /*V1.06-o*/
         }
         else if ( err == STS_W_EMPTYCLASS ) /* Else -> class emptyk is empty */
         {
-            Rprintf( "Class %d empty at iteration %d\n", 
+            Rprintf( "Class %d empty at iteration %d\n",
                      emptyk, iter ) ;
             if ( Flog != NULL )
-               Rprintf( " Class %d empty at iteration %d\n", 
+               Rprintf( " Class %d empty at iteration %d\n",
                         emptyk, iter ) ;
         }
 
@@ -1881,19 +1884,19 @@ static int NemAlgo
     /* Compute and display value of criteria */  /*V1.03-a*/
     if ( iter == 0 )       /* model parameters estimation not yet done */
     {
-        EstimPara( CM, DataP, nk, NemParaP->MissMode, SpecP, 
+        EstimPara( CM, DataP, nk, NemParaP->MissMode, SpecP,
 		   &emptyk, ParaP ) ;
-        ComputePkFkiM( DataP, SpecP, ParaP, 
+        ComputePkFkiM( DataP, SpecP, ParaP,
 		       WorkP->PkFkiM, WorkP->LogPkFkiM ) ;
     }
     ComputeCrit( npt, nk, ParaP->Beta, CM, SpatialP, WorkP, CriterP ) ;
     CalcError( CM, npt, 1, & CriterP->Errinfo, & CriterP->Errcur );
 
     Rprintf( "\n" ) ;  /* -> to end iterations count line */
-    Rprintf( 
+    Rprintf(
 	     "  criterion NEM = %6.3f / Ps-Like = %6.3f / Lmix = %6.3f\n" ,
 	     CriterP->U , CriterP->M , CriterP->L ) ;    /*V1.03-g*/
-    if ( CriterP->Errinfo.Kr != 0 ) 
+    if ( CriterP->Errinfo.Kr != 0 )
       Rprintf( "  error = %5.3f\n", CriterP->Errcur.Errorrate ) ;
 
     /* If convergence test was requested and no error occurred */
@@ -1904,9 +1907,9 @@ static int NemAlgo
         {
             Rprintf( "  NEM converged after %d iterations\n", iter ) ;
         }
-        else 
+        else
         {
-            Rprintf( "  NEM did not converge after %d iterations\n", 
+            Rprintf( "  NEM did not converge after %d iterations\n",
                      iter ) ;
         }
     }
@@ -1923,7 +1926,7 @@ static void WriteLogHeader
             int                 NbEIters,   /* I */
             int                 Nd,         /* I : dimension */
             const ModelSpecT*   SpecP       /* I */
-        ) 
+        )
 /* ------------------------------------------------------------------- */
 {
     int     it, k, d ;
@@ -1933,7 +1936,7 @@ static void WriteLogHeader
     Rprintf( "%4s  %5s %5s %5s", "It", "UM", "PM", "Er" ) ;
     for ( it = 0 ; it < NbEIters ; it ++ )
     {
-        Rprintf( " %3s%-2d %3s%-2d %3s%-2d", 
+        Rprintf( " %3s%-2d %3s%-2d %3s%-2d",
 		 "UE", it+1, "PE", it+1, "Er", it+1 ) ;
     }
 
@@ -1986,7 +1989,7 @@ static void WriteLogHeader
 
 /* ------------------------------------------------------------------- */
 static void ComputePartitionFromPara
-        ( 
+        (
 	 const int          Needinit,    /* I : 1 if need init, 0 if normal */
 	 const DataT*       DataP,       /* I */
 	 const NemParaT*    NemParaP,    /* I */
@@ -2001,20 +2004,20 @@ static void ComputePartitionFromPara
 /* ------------------------------------------------------------------- */
 {
   /* Compute density of each point relatively to each class */
-  ComputePkFkiM( DataP, SpecP, ParaP, 
+  ComputePkFkiM( DataP, SpecP, ParaP,
                  WorkingP->PkFkiM, WorkingP->LogPkFkiM ) ;
 
   if ( Needinit ) {
     /* Compute initial partition by "blind" segmentation */
     float beta = ParaP->Beta ;
     ParaP->Beta = 0.0 ;
-    ComputePartition( SpecP, ParaP, DataP, SpatialP, NemParaP, 
+    ComputePartition( SpecP, ParaP, DataP, SpatialP, NemParaP,
 		      NULL, C_NK, WorkingP, CriterP ) ;
     ParaP->Beta = beta ;
   }
 
   /* Compute partition from parameters and previous partition */
-  ComputePartition( SpecP, ParaP, DataP, SpatialP, NemParaP, 
+  ComputePartition( SpecP, ParaP, DataP, SpatialP, NemParaP,
 		    Flog, C_NK, WorkingP, CriterP ) ;
 
   /* Write parameters to file */
@@ -2035,7 +2038,7 @@ static void WriteLogClasses
             int                 Nd,         /* I : dimension */
             const ModelSpecT*   SpecP,      /* I */
             const ModelParaT*   ParaP       /* I */
-        ) 
+        )
 /* ------------------------------------------------------------------- */
 {
     int     k, d ;
@@ -2098,14 +2101,14 @@ static int HasConverged       /* ret : TRUE if convergence test satisfied */
   const float*    CM,         /* I : current  classification matrix */
   const int       Npt,        /* I : number of objects */
   const int       Nk,         /* I : number of classes */
-  const float     OldCrit,    /* I : previous criterion */ 
+  const float     OldCrit,    /* I : previous criterion */
   const int       CritToDo,   /* I : 1 = criterion needs to be computed */
   const float     Beta,       /* I : value of beta to compute criterion */
   const SpatialT* SpatialP,   /* I : spatial info to compute criterion */
   const CritET    WhichCrit,  /* I : what criterion to use */
   CriterT*        CriterP,    /* I/O : current criterion */
   WorkingT*       WorkP       /* I: LogPkFkiM, T: Neighs */
-) 
+)
 /* ------------------------------------------------------------------- */
 {
   switch( CvTest ) {
@@ -2118,7 +2121,7 @@ static int HasConverged       /* ret : TRUE if convergence test satisfied */
 	  int i = (ipt * Nk) + ik ;
 	  float dif = CM[ i ] - ColdM[ i ] ;
 	  if ( dif < 0 ) dif = -dif ;
-        
+
 	  if ( dif > maxdif ) maxdif = dif ;
 	}
 
@@ -2133,14 +2136,14 @@ static int HasConverged       /* ret : TRUE if convergence test satisfied */
 	ComputeCrit( Npt, Nk, Beta, CM, SpatialP, WorkP, CriterP ) ;
 
       curcrit = ChosenCrit( CriterP , WhichCrit ) ;
-      if ( curcrit != 0 ) 
+      if ( curcrit != 0 )
 	critdif = fabs( ( curcrit - OldCrit ) / curcrit ) ;
       else
 	critdif = MAXFLOAT ;
 
       return ( critdif < CvThres ) ;
     }
-    
+
 
     case CVTEST_NONE: return FALSE ;
     default:          return FALSE ;
@@ -2189,7 +2192,7 @@ EstimBeta
     return 0 ;
 
   /* Get function specific to chosen spatial model */
-  if ( GetSpatialFunc( SpatialP->Type, 
+  if ( GetSpatialFunc( SpatialP->Type,
 			       & fGetNeigh ) != STS_OK )
     return 2 ;
 
@@ -2227,15 +2230,15 @@ EstimBeta
       grad += sumk_cik_con - sumk_con_exp / sumk_exp ;
 
       /* might get NaN because of high sumk_exp*/
-      dsec += (float) ( (double)  
+      dsec += (float) ( (double)
 	( sumk_con2_exp * sumk_exp - sumk_con_exp * sumk_con_exp )
-	/ (double) ( sumk_exp * sumk_exp ) ) ; 
+	/ (double) ( sumk_exp * sumk_exp ) ) ;
     }
 
     /* Update beta */
     if ( BtaPsGradP->Step <= 0.0 ) {
       dsec = dsec * 4 ;  /* reduce the step to avoid overstepping */
-      if ( dsec < ( Npt / 10 ) ) 
+      if ( dsec < ( Npt / 10 ) )
 	dsec = Npt / 10 ;
 
       (*BetaP) += grad / dsec ;
@@ -2278,7 +2281,7 @@ static StatusET ComputePkFkiM
             const ModelParaT*   ParaP,      /* I */
             double*             PkFkiM,   /* O */
             float*              LogPkFkiM /* O */
-        ) 
+        )
 /* ------------------------------------------------------------------- */
 {
     StatusET        err = STS_OK ;
@@ -2301,7 +2304,7 @@ static StatusET ComputePkFkiM
         double pk    = ParaP->Prop_K[ k ] ;
         float logpk ;
 
-	if ( pk > EPSILON ) 
+	if ( pk > EPSILON )
 	  logpk = log( pk ) ;
 	else
 	  {
@@ -2314,7 +2317,7 @@ static StatusET ComputePkFkiM
             double fki ;
 	    float  logfki ;
 
-            fCompuDens( DataP->NbVars, k, DataP->NbMiss, ParaP, 
+            fCompuDens( DataP->NbVars, k, DataP->NbMiss, ParaP,
                         & (DataP->PointsM[ i * DataP->NbVars ]) ,
                         & fki , & logfki );
 
@@ -2339,7 +2342,7 @@ static StatusET ComputePkFkiM
             const ModelParaT*   ParaP,      /* I */
             double*             PkFki_NK,   /* O */
             float*              LogPkFki_NK /* O */
-        ) 
+        )
 /* ------------------------------------------------------------------- */
 {
     StatusET        err = STS_OK ;
@@ -2359,7 +2362,7 @@ static StatusET ComputePkFkiM
         double pk    = ParaP->Prop_K[ k ] ;
         float logpk ;
 
-	if ( pk > EPSILON ) 
+	if ( pk > EPSILON )
 	  logpk = log( pk ) ;
 	else
 	  {
@@ -2394,20 +2397,20 @@ static int ComputePartition
           float*              CM,         /* I/O */
           WorkingT*           WorkP,      /* I:PkFkiM O:CtmpM,Neighs,CiNumV */
           CriterT*            CriterP     /* O */
-      ) 
+      )
 /* ------------------------------------------------------------------- */
 {
   StatusET sts ;
 
 
-  if ( NemParaP->Algo == ALGO_GEM ) 
+  if ( NemParaP->Algo == ALGO_GEM )
     {
-      sts = ComputePartitionGEM( SpecP, ParaP, DataP, SpatialP, NemParaP, 
+      sts = ComputePartitionGEM( SpecP, ParaP, DataP, SpatialP, NemParaP,
 				 Flog, CM, WorkP, CriterP ) ;
     }
   else
     {
-      sts = ComputePartitionNEM( SpecP, ParaP, DataP, SpatialP, NemParaP, 
+      sts = ComputePartitionNEM( SpecP, ParaP, DataP, SpatialP, NemParaP,
 				 Flog, CM, WorkP, CriterP ) ;
     }
 
@@ -2430,7 +2433,7 @@ static int ComputePartitionNEM
           float*              CM,         /* I/O */
           WorkingT*           WorkP,      /* I:PkFkiM O:CtmpM,Neighs,CiNumV */
           CriterT*            CriterP     /* O */
-      ) 
+      )
 /* ------------------------------------------------------------------- */
 {
     StatusET        err ;
@@ -2445,7 +2448,7 @@ static int ComputePartitionNEM
 
 
     /* Get function specific to chosen spatial model */
-    if ( ( err = GetSpatialFunc( SpatialP->Type, 
+    if ( ( err = GetSpatialFunc( SpatialP->Type,
                                  & fGetNeigh ) ) != STS_OK )     /*V1.06-c*/
       return err ;
 
@@ -2464,19 +2467,19 @@ static int ComputePartitionNEM
 	    int ipt = DataP->SiteVisitV[ ivis ] ;  /*V1.04-c*/
 
             /* If not in init_label mode or label is not known */
-	    if ( ( NemParaP->InitMode   != INIT_LABEL ) || 
+	    if ( ( NemParaP->InitMode   != INIT_LABEL ) ||
 		 ( DataP->LabelV[ ipt ] == 0 ) ) {
 
-		ComputeLocalProba( ipt, nk, ParaP, &(SpatialP->NeighData), 
-				   fGetNeigh, pkfkiM, 
-				   (NemParaP->SiteUpdate == UPDATE_SEQ)? 
-				   CM : ctmpM, 
-				   &CM[ipt*nk], 
+		ComputeLocalProba( ipt, nk, ParaP, &(SpatialP->NeighData),
+				   fGetNeigh, pkfkiM,
+				   (NemParaP->SiteUpdate == UPDATE_SEQ)?
+				   CM : ctmpM,
+				   &CM[ipt*nk],
 				   &WorkP->Neighs, WorkP->CiNumV );
 
 		/* Eventual C-step */
 		if ( NemParaP->Algo == ALGO_NCEM ) {
-		  int kmap   = ComputeMAP( CM , ipt , nk , NemParaP->TieRule, 
+		  int kmap   = ComputeMAP( CM , ipt , nk , NemParaP->TieRule,
 					   WorkP->KmaxesV ) ;
 
 		  LabelToClassVector( nk, kmap, &CM[ ipt * nk ] ) ;
@@ -2487,7 +2490,7 @@ static int ComputePartitionNEM
         } /* end for ( ivis = 0 ; ivis < npt ; ivis ++ ) */
 
 	/* Compute criterion after this internal iteration of E-Step */
-	WriteLogCrit( Flog, npt, nk, ParaP->Beta, CM, SpatialP, 
+	WriteLogCrit( Flog, npt, nk, ParaP->Beta, CM, SpatialP,
 		      WorkP, CriterP ) ;
 
     } /* end for ( itere = 0 ; itere < NemParaP->NbEIters ; itere ++ ) */
@@ -2514,7 +2517,7 @@ static int ComputePartitionGEM /* +++ */
           float*              CM,         /* I/O */
           WorkingT*           WorkP,      /* I:PkFkiM O:CtmpM,Neighs,CiNumV */
           CriterT*            CriterP     /* O */
-      ) 
+      )
 /* ------------------------------------------------------------------- */
 {
     StatusET        err ;
@@ -2531,7 +2534,7 @@ static int ComputePartitionGEM /* +++ */
     int             ivis ;
 
 
-    if ( ( err = GetSpatialFunc( SpatialP->Type, 
+    if ( ( err = GetSpatialFunc( SpatialP->Type,
                                  & fGetNeigh ) ) != STS_OK )     /*V1.06-c*/
         return err ;
 
@@ -2539,7 +2542,7 @@ static int ComputePartitionGEM /* +++ */
     WriteLogCrit( Flog, npt, nk, ParaP->Beta, CM, SpatialP, WorkP, CriterP ) ;
 
     /* Allocate all memory */
-    if ( ( z_nk = GenAlloc( npt * nk, sizeof( float ), 
+    if ( ( z_nk = GenAlloc( npt * nk, sizeof( float ),
 		     0, "ComputePartitionGEM", "z_nk" ) ) == NULL )
 	return STS_E_MEMORY ;
 
@@ -2554,7 +2557,7 @@ static int ComputePartitionGEM /* +++ */
       /* Initialize hard classification from fuzzy classification, by MPM */
       for ( ipt = 0 ; ipt < npt ; ipt ++ )
 	{
-	  int kmap   = ComputeMAP( CM , ipt , nk , NemParaP->TieRule, 
+	  int kmap   = ComputeMAP( CM , ipt , nk , NemParaP->TieRule,
 				   WorkP->KmaxesV ) ;
 
 	  LabelToClassVector( nk, kmap, &z_nk[ ipt * nk ] ) ;
@@ -2569,7 +2572,7 @@ static int ComputePartitionGEM /* +++ */
 
     /* Iteratively run Monte-Carlo simulation with startup and
        recording durations */
-    for ( icycle = 0 ; 
+    for ( icycle = 0 ;
 	  icycle < NemParaP->NbEIters * (NBCYCLES_STARTUP + NBCYCLES_RECORD) ;
 	  icycle ++ ) {
 
@@ -2581,19 +2584,19 @@ static int ComputePartitionGEM /* +++ */
 	    int ipt = DataP->SiteVisitV[ ivis ] ;  /*V1.04-c*/
 
             /* If not in init_label mode or label is not known */
-	    if ( ( NemParaP->InitMode   != INIT_LABEL ) || 
+	    if ( ( NemParaP->InitMode   != INIT_LABEL ) ||
 		 ( DataP->LabelV[ ipt ] == 0 ) ) {
 
-		ComputeLocalProba( ipt, nk, ParaP, &(SpatialP->NeighData), 
-				   fGetNeigh, pkfkiM, 
-				   (NemParaP->SiteUpdate == UPDATE_SEQ)? 
-				   z_nk : ctmpM, 
-				   &CM[ipt*nk], 
+		ComputeLocalProba( ipt, nk, ParaP, &(SpatialP->NeighData),
+				   fGetNeigh, pkfkiM,
+				   (NemParaP->SiteUpdate == UPDATE_SEQ)?
+				   z_nk : ctmpM,
+				   &CM[ipt*nk],
 				   &WorkP->Neighs, WorkP->CiNumV );
 
 		/* Update zi by multinomial draw from ti's k proportions */
 		kdraw = Multinomial( nk , & CM[ ipt * nk ] ) - 1 ;
-                    
+
 		LabelToClassVector( nk, kdraw, &z_nk[ ipt * nk ] ) ;
 
 		/* Update occurrence counter if in record phase */
@@ -2615,7 +2618,7 @@ static int ComputePartitionGEM /* +++ */
       for ( ipt = 0 ; ipt < npt ; ipt ++ )
 	{
 	  for ( k = 0 ; k < nk ; k ++ )
-	    CM[ ( ipt * nk ) + k ] = 
+	    CM[ ( ipt * nk ) + k ] =
 	      ( (float) occur_nk[ ( ipt * nk ) + k ] ) / nbrecord ;
 	}
     }
@@ -2658,10 +2661,10 @@ static int ComputeLocalProba
   /* Get point's neighbours */
   nbn = FGetNeigh( Ipt, NeighDataP, NeighsP ) ;
 
-  /* For each class k : 
+  /* For each class k :
      - compute the contribution of xi's neighbors
      (j), based on their last cjk
-     - based on the neighbors contribution and on the density for 
+     - based on the neighbors contribution and on the density for
      class k at xi, compute cik's numerator
      - increment the cumulated sum of ci's K numerators
   */
@@ -2670,7 +2673,7 @@ static int ComputeLocalProba
     /* i's class k context contrib. */
     float   context = SumNeighsOfClass( k, nbn, Nk, NeighsP->NeighsV, Cin_NK );
 
-    Cinum_K[ k ] = PkfkiM[ ( Ipt * Nk ) + k ] * 
+    Cinum_K[ k ] = PkfkiM[ ( Ipt * Nk ) + k ] *
       exp( (double) ParaP->Beta * context ) ;
 
     cumnum = cumnum + Cinum_K[ k ] ;
@@ -2707,7 +2710,7 @@ static int ComputeLocalProba
  return ( cumnum > 0.0 ) ;
 }
 
- 
+
 /*-------------------------------------------------------*/
 static void WriteLogCrit
      (
@@ -2718,7 +2721,7 @@ static void WriteLogCrit
         const float*        CM,          /* I : class. matrix [Npt*Nk] */
         const SpatialT*     SpatialP,    /* I : neighborhood system */
         WorkingT*           WorkP,       /* I :PkFkiM, O:Neighs */
-        CriterT*            CriterP      /* O : computed criteria */ 
+        CriterT*            CriterP      /* O : computed criteria */
      )
 /*-------------------------------------------------------*/
 {
@@ -2726,7 +2729,7 @@ static void WriteLogCrit
 
   if ( Flog != NULL ) {
 
-    ComputeCrit( Npt, Nk, Beta, CM, SpatialP, 
+    ComputeCrit( Npt, Nk, Beta, CM, SpatialP,
 		 WorkP, CriterP ) ;
 
     mult = exp( - ((int) ( log(Npt/1000.)/log(10) )) * log( 10 ) ) ;
@@ -2740,7 +2743,7 @@ static void WriteLogCrit
 
 
 /*-------------------------------------------------------*/
-static int Multinomial(int km, const float *tk) 
+static int Multinomial(int km, const float *tk)
 /*
  Entrees
      km           nombre de modalites
@@ -2775,7 +2778,7 @@ static StatusET ComputeCrit
         const float*        CM,          /* I : class. matrix [Npt*Nk] */
         const SpatialT*     SpatialP,    /* I : neighborhood system */
         WorkingT*           WorkP,       /* I :LogPkFkiM, T:Neighs */
-        CriterT*            CriterP      /* O : computed criteria */ 
+        CriterT*            CriterP      /* O : computed criteria */
      )
 /* ------------------------------------------------------------------- */
 {
@@ -2785,7 +2788,7 @@ static StatusET ComputeCrit
     NeighT*     neiV = WorkP->Neighs.NeighsV ;
     GetNeighFT* fGetNeigh ;     /*V1.06-c*/
 
-    if ( ( err = GetSpatialFunc( SpatialP->Type, 
+    if ( ( err = GetSpatialFunc( SpatialP->Type,
                                  & fGetNeigh ) ) != STS_OK )    /*V1.06-c*/
     {
         return err ;
@@ -2808,8 +2811,8 @@ static StatusET ComputeCrit
         int nbn = fGetNeigh( i, & SpatialP->NeighData, &(WorkP->Neighs) ) ;
 
         /* For each class k */
-        for ( k = 0 , fi = 0.0, zi = 0.0 ; 
-	      k < Nk ; 
+        for ( k = 0 , fi = 0.0, zi = 0.0 ;
+	      k < Nk ;
 	      k ++ )
         {
             float   cik      = CM[ i * Nk + k ] ;
@@ -2852,7 +2855,7 @@ static StatusET ComputeCrit
 
 /* ------------------------------------------------------------------- */
 static void CalcError                /*V1.04-e*/
-      ( 
+      (
        const float*     Cla_N_Kc, /* I : found classification */
        const int        N,        /* I : number of points */
        const int        Harden,   /* I : 1 use hardened CM, 0 use CM itself */
@@ -2885,7 +2888,7 @@ static void CalcError                /*V1.04-e*/
   }
 
   kmaxes_Kc = GenAlloc( Kc, sizeof( int ), 0, "CalcError", "kmaxes_Kc" ) ;
-  if ( kmaxes_Kc == NULL ) 
+  if ( kmaxes_Kc == NULL )
     return ;
 
   /* Copy classification locally, eventually harden */
@@ -2897,7 +2900,7 @@ static void CalcError                /*V1.04-e*/
     }
   }
 
-  /* 
+  /*
    *  Compute agreement matrix : for each class ikc of current partition
    *  and each class ikr of reference partition, their agreement is the
    *  scalar product of their [N] classification vectors.
@@ -2908,7 +2911,7 @@ static void CalcError                /*V1.04-e*/
       if ( ( ikc < Kc ) && ( ikr < Kr ) ) {
 	ErrcurP->Agree_Km_Km[ ikc * Km + ikr ] = 0.0 ;
 	for ( in = 0 ; in < N ; in ++ )
-	  ErrcurP->Agree_Km_Km[ ikc * Km + ikr ] += 
+	  ErrcurP->Agree_Km_Km[ ikc * Km + ikr ] +=
 	    Loclas_N_Kc[ in * Kc + ikc ] *
 	    ErrinfoP->Refclas_N_Kr[ in * Kr + ikr ] ;
       }
@@ -2918,7 +2921,7 @@ static void CalcError                /*V1.04-e*/
   }
 
   /* Find permutation of lines with maximum sum of diagonal */
-  bestagree            = 0.0 ; 
+  bestagree            = 0.0 ;
   ErrcurP->Ibestpermut = 0 ;
   for ( ikmfact = 0 ; ikmfact < ErrinfoP->Kmfac ; ikmfact ++ ) {
     /* sum diagonal of permuted matrix and compare to best agreement */
@@ -2946,7 +2949,7 @@ static float SumNeighsOfClass
         int             Nk,     /* I : number of classes */
         const NeighT*   NeiV ,  /* I : neighbours, [Nbn] */
         const float*    CM      /* I : classification matrix [Npt*Nk] */
-     ) 
+     )
 /* ------------------------------------------------------------------- */
 {
     float   Sumj_wij_cjk ; /* sum of neighbours'membership in class K */
@@ -2954,8 +2957,8 @@ static float SumNeighsOfClass
     int     n ;            /* neighbour counter : 0..nbn-1 */
     float   sumj_wij ;     /* divide sumj_wij_cjk by this normalizing factor */
 
-    for ( n = 0, Sumj_wij_cjk = 0.0, sumj_wij = 0.0 ; 
-          n < Nbn ; 
+    for ( n = 0, Sumj_wij_cjk = 0.0, sumj_wij = 0.0 ;
+          n < Nbn ;
           n ++ )
     {
         int     j   = NeiV[ n ].Index ;

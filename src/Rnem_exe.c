@@ -8,7 +8,7 @@
 #include <stdio.h>      /* printf, ... */
 #include <stdlib.h>     /* srand */
 #ifdef __TURBOC__
-#include <alloc.h>      /* coreleft, ... */ 
+#include <alloc.h>      /* coreleft, ... */
 #endif
 #include <string.h>     /* strncpy, ... */
 #include <math.h>       /* sqrt, ... */
@@ -31,16 +31,16 @@
 
 
     static int SetVisitOrder
-        ( 
+        (
 	     int         Npt,
 	     OrderET     VisitOrder,
 	     int**       SiteVisitVP
 	) ;
-                                     
+
 
 
     static int  MakeErrinfo
-         ( 
+         (
              const char* RefName,
              int         N,
              int         Kc,
@@ -52,7 +52,7 @@
 
 
     static int  SetImageNeigh
-                (   
+                (
                     NeighET     NeighSpec,
                     char*       NeiDescS,
                     NeighDataT* NeighDataP
@@ -159,7 +159,7 @@ static int SetVisitOrder   /*V1.04-e*/
 
 /* ------------------------------------------------------------------- */
 static int  MakeErrinfo
-         ( 
+         (
              const char* RefName,       /* I : filename of reference class */
              int         N,             /* I : number of objects */
              int         Kc,            /* I : user number of classes */
@@ -178,10 +178,10 @@ static int  MakeErrinfo
 
 
     /* Check all reference labels ok */
-    for ( ipt = 0, err = STS_OK ; 
+    for ( ipt = 0, err = STS_OK ;
 	  ( ipt < N ) && ( err == STS_OK ) ; ipt ++ ) {
       if ( ( tmpV[ ipt ] <= 0 ) || ( tmpV[ ipt ] > ErrinfoP->Kr ) ) {
-	Rprintf("Reference class for point %d not in 1..%d \n", 
+	Rprintf("Reference class for point %d not in 1..%d \n",
 		 ipt + 1, ErrinfoP->Kr ) ;
 	err = STS_E_FILE ;
       }
@@ -191,7 +191,7 @@ static int  MakeErrinfo
       return err ;
 
     /* Compute greatest number of classes and permutations of classes */
-    ErrinfoP->Km = ( ErrinfoP->Kc > ErrinfoP->Kr ) ? 
+    ErrinfoP->Km = ( ErrinfoP->Kc > ErrinfoP->Kr ) ?
       ErrinfoP->Kc : ErrinfoP->Kr ;
 
     ErrinfoP->Kmfac = factorial( ErrinfoP->Km ) ;
@@ -201,12 +201,12 @@ static int  MakeErrinfo
     compute_permutations( 0, ErrinfoP->Km, & ErrinfoP->Perm_Kmfac_Km ) ;
 
     /* Allocate and initialize later computed stuff */
-    if ( ( ErrcurP->Agree_Km_Km = 
+    if ( ( ErrcurP->Agree_Km_Km =
 	   GenAlloc( ErrinfoP->Km * ErrinfoP->Km, sizeof( float ),
 		     0, "MakeErrinfo", "Agree_Km_Km" ) ) == NULL )
         return STS_E_MEMORY ;
 
-    if ( ( ErrcurP->Loclas_N_Kc = 
+    if ( ( ErrcurP->Loclas_N_Kc =
 	   GenAlloc( N * ErrinfoP->Kc, sizeof( float ),
 		     0, "MakeErrinfo", "Loclas_N_Kc" ) ) == NULL )
         return STS_E_MEMORY ;
@@ -305,16 +305,16 @@ static int rec_permutations        /* ret 0 if OK, -1 if memory error */
   /* Check against out of bounds offset */
   if ( ( offset < 0 ) || ( factorial( K ) < ( offset + A * am1fact ) ) )
     return 1 ;
-  
-  if ( ( redarr_am1 = malloc( ( A - 1 ) * sizeof( int ) ) ) == NULL ) 
+
+  if ( ( redarr_am1 = malloc( ( A - 1 ) * sizeof( int ) ) ) == NULL )
     return -1;
 
   /* For each element of given array */
   for ( ia = 0, err = 0 ; ( ia < A ) && ( err == 0 ) ; ia ++ ) {
 
-    /* Copy (A-1)! times this element into the column ( K - A ) of perms, 
+    /* Copy (A-1)! times this element into the column ( K - A ) of perms,
        starting from line ( offset + ia * (A-1)! ) (skip previous ia's) */
-    for ( iam1fact = 0 ; iam1fact < am1fact ; iam1fact ++ ) 
+    for ( iam1fact = 0 ; iam1fact < am1fact ; iam1fact ++ )
       perms_Kfact_K[ ( offset + ia * am1fact + iam1fact ) * K + ( K - A ) ] =
 	array_A[ ia ] ;
 
@@ -376,9 +376,7 @@ static int  SetImageNeigh
         neighV[ 3 ].Dc = 0 ;
         neighV[ 3 ].Weight = 1.0 ;
 
-        strncpy( NeiDescS , 
-                 "  Default 1st-order neighbors (horizontal and vertical)\n",
-                 LEN_LINE ) ;
+        snprintf(NeiDescS, LEN_LINE, "  Default 1st-order neighbors (horizontal and vertical)\n");
         break ;
 
     default :
@@ -448,7 +446,7 @@ static int GetInputParaPHUPE
     }
 
     Rprintf( "\nData : " ) ;
-    
+
 
     Rprintf( "  nb points   = %10d\n", DataP->NbPts ) ;
     if ( SpatialP->Type == TYPE_IMAGE )
@@ -583,7 +581,7 @@ void nem (float *vector, int *Nl, int *Nc, int *Nvars, int *Nclasses, float *bet
 	//srand( (unsigned) NemPara.Seed ) ;
 
 	ClassifM =  GenAlloc( Data.NbPts * StatModel.Spec.K, sizeof( float ), 0, "nem", "ClassifMP" ) ;
-	
+
 	ClassifyByNem( &NemPara, &Spatial, &Data, &StatModel, ClassifM, &Criteria ) ;
 
 	Rprintf("\n");

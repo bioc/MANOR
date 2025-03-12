@@ -40,8 +40,7 @@ void* GenAlloc
              where, what, nelem, elsize);
     if (doexit)
     {
-        fprintf(stderr, "%s", msg);
-        exit(EXIT_FAILURE);
+        error("%s", msg);
     }
     return NULL;
 }

@@ -11,7 +11,7 @@
 \arguments{
   \item{arrayCGH}{an object of type \code{arrayCGH}}
   \item{data}{a data frame with two columns: 'x' and 'y', and optionally
-    a column data\$chrLim giving the limits of each chromosome}
+    a column 'chrLim' giving the limits of each chromosome}
   \item{x}{a variable name from \code{arrayCGH$cloneValues} giving the order position
     of the clones along the genome (defaults to 'PosOrder')}
   \item{y}{a variable name from \code{arrayCGH$cloneValues} to be plotted along the
